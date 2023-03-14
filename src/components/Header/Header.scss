@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  &__logo {
+    text-decoration: none;
+    color: #3796ee;
+    font-weight: 700;
+  }
+}
