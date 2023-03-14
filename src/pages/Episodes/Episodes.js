@@ -13,20 +13,24 @@ const Episodes = ({ dataEpisodes, podcastId }) => {
       </div>
 
       <table className="episodes__table">
-        <tr>
-          <th>Title</th>
-          <th>Date</th>
-          <th>Duration</th>
-        </tr>
-        {dataEpisodes?.map(({ name, duration, releaseDate, id }) => (
-          <tr key={id}>
-            <th>
-              <Link to={`/podcast/${podcastId}/episode/${id}`}>{name}</Link>
-            </th>
-            <th>{new Date(releaseDate).toISOString().substring(0, 10)}</th>
-            <th>{millisToMinutesAndSeconds(duration)}</th>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Duration</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {dataEpisodes?.map(({ name, duration, releaseDate, id }) => (
+            <tr key={id}>
+              <th>
+                <Link to={`/podcast/${podcastId}/episode/${id}`}>{name}</Link>
+              </th>
+              <th>{new Date(releaseDate).toISOString().substring(0, 10)}</th>
+              <th>{millisToMinutesAndSeconds(duration)}</th>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import "./../src/styles/global.scss";
 
 export const parameters = {
@@ -11,9 +11,9 @@ export const parameters = {
   },
 };
 export const mockProvider = (Story) => (
-  <BrowserRouter>
+  <MemoryRouter initialEntries={["/podcast/1460157002/episode/1000603837862"]}>
     <Story />
-  </BrowserRouter>
+  </MemoryRouter>
 );
 
 export const decorators = [mockProvider];

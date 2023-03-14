@@ -24,6 +24,8 @@ const Episode = ({ dataEpisodes }) => {
       <audio
         className="episode__audio"
         controls
+        aria-label="Audio Player"
+        role="region"
         src={dataEpisode?.episodeUrl}
       />
     </div>
