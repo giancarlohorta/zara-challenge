@@ -1,18 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes, useParams } from "react-router-dom";
 import Item from "../../components/Item/Item";
 import useFetch from "../../hooks/useFetch";
 import { INTERNAL_ROUTES } from "../../routes";
-import { StatusContext } from "../../StatusContext";
 import { KEY_PODCASTS } from "../../utils/constants";
 import { getDataWithExpiry } from "../../utils/functions/getDataLocalStorage";
 import { normalizedEpisodes } from "../../utils/functions/normalized";
 import { urlGetPodcastById } from "../../utils/functions/urls";
 import "./Podcasts.scss";
 
-const Podcast = () => {
+const Podcast = ({ changeStatus }) => {
   const { podcastId } = useParams();
   const DateNow = new Date();
   const dataLocalStorage = JSON.parse(localStorage.getItem(podcastId));
@@ -21,9 +20,6 @@ const Podcast = () => {
   const [dataEpisodes, setDataEpisodes] = useState(dataLocalStorage?.data);
 
   const { data: dataFetch, request, fetchStatus } = useFetch();
-
-  const { changeStatus } = useContext(StatusContext);
-
   const fetchEpisodes = () => {
     request(urlGetPodcastById(podcastId));
   };

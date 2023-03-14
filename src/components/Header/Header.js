@@ -1,13 +1,10 @@
 import { PropTypes } from "prop-types";
-import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { StatusContext } from "../../StatusContext";
 import { STATUS_FETCH } from "../../utils/constants";
 import Loader from "../Loader";
 import "./Header.scss";
 
-const Header = () => {
-  const { status } = useContext(StatusContext);
+const Header = ({ status }) => {
   return (
     <div className="container header">
       <Link to="/" className="header__logo">

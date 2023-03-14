@@ -1,26 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ItemList from "../../components/ItemList";
 import SearchInput from "../../components/SearchInput";
 import useFetch from "../../hooks/useFetch";
-import { StatusContext } from "../../StatusContext";
 import { KEY_PODCASTS, PODCASTS_LIMIT } from "../../utils/constants";
 import { getDataWithExpiry } from "../../utils/functions/getDataLocalStorage";
 import { normalizedDataPodcasts } from "../../utils/functions/normalized";
 import { urlAllTopPodcasts } from "../../utils/functions/urls";
 
-const Home = () => {
+const Home = ({ changeStatus }) => {
   const dataLocalStorage = JSON.parse(localStorage.getItem(KEY_PODCASTS));
   const DateNow = new Date();
   const [keyword, setKeyword] = useState("");
   const [filteredPodcasts, setFilteredPodcasts] = useState(
     dataLocalStorage?.data
   );
-  console.log(filteredPodcasts);
   const [normalizedData, setNormalizedData] = useState(dataLocalStorage?.data);
   const { data, request, fetchStatus } = useFetch();
-
-  const { changeStatus } = useContext(StatusContext);
 
   const handleChange = (value) => {
     if (value) {
@@ -55,7 +51,7 @@ const Home = () => {
       KEY_PODCASTS
     );
     if (normalizedData) setFilteredPodcasts(normalizedData);
-  }, [fetchStatus]);
+  }, [fetchStatus, normalizedData]);
 
   return (
     <div>

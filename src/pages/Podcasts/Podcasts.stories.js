@@ -1,25 +1,23 @@
 import React from "react";
-import Home from "./Home";
+import Podcasts from "./Podcasts";
 import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
-import { podcasts } from "../../utils/mock/podcasts";
+import { episodes } from "../../utils/mock/podcasts";
 
 export default {
-  title: "Pages/Home",
-  component: Home,
+  title: "Pages/Podcasts",
+  component: Podcasts,
 };
 
 const mock = new MockAdapter(axios, { delayResponse: 0 });
 
 const mockRequest = () => {
-  mock.onGet(/toppodcasts/gi).reply(200, podcasts);
+  mock.onGet(/&media=podcast&/gi).reply(200, episodes);
 };
 
 mockRequest();
 
-const Template = (args) => {
-  return <Home {...args} />;
-};
+const Template = (args) => <Podcasts {...args} />;
 
 export const Default = Template.bind({});
 

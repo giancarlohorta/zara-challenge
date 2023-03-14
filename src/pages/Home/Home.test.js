@@ -1,18 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
-import { Default } from "./Episodes.stories";
+import { Default } from "./Home.stories";
 
-describe("tests about Episodes page", () => {
+describe("tests about Home page", () => {
   test("render all elements on default", () => {
-    render(
-      <BrowserRouter>
-        <Default {...Default.args} />
-      </BrowserRouter>
-    );
+    render(<Default {...Default.args} />);
     const EpisodeName = screen.getByText(
       "PRINCE FAMILY: MILLION DOLLAZ WORTH OF GAME EPISODE 205"
     );
-    expect(screen.getByText(/Episodes: 7/gi)).toBeInTheDocument();
+    expect(screen.getByText(/Home: 7/gi)).toBeInTheDocument();
     expect(EpisodeName).toBeInTheDocument();
     expect(EpisodeName).toHaveAttribute(
       "href",
