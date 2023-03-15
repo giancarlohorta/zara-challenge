@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { PropTypes } from "prop-types";
 import { useParams } from "react-router-dom";
 import "./Episode.scss";
 
@@ -30,6 +31,22 @@ const Episode = ({ dataEpisodes }) => {
       />
     </div>
   );
+};
+
+Episode.propTypes = {
+  dataEpisodes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      duration: PropTypes.number,
+      description: PropTypes.string,
+      episodeUrl: PropTypes.string,
+      releaseDate: PropTypes.string,
+    })
+  ),
+};
+Episode.defaultProps = {
+  dataEpisodes: [],
 };
 
 export default Episode;

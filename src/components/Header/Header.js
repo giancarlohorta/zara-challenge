@@ -16,10 +16,10 @@ const Header = ({ status }) => {
 };
 
 Header.propTypes = {
-  loading: PropTypes.bool,
+  status: PropTypes.bool,
 };
 Header.defaultProps = {
-  loading: false,
+  status: false,
 };
 
 export default Header;

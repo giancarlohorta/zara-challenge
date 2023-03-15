@@ -1,17 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useEffect, useState } from "react";
-import { Route, Routes, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { PropTypes } from "prop-types";
 import Item from "../../components/Item/Item";
 import useFetch from "../../hooks/useFetch";
-import { INTERNAL_ROUTES } from "../../routes";
 import { KEY_PODCASTS } from "../../utils/constants";
 import { getDataWithExpiry } from "../../utils/functions/getDataLocalStorage";
 import { normalizedEpisodes } from "../../utils/functions/normalized";
 import { urlGetPodcastById } from "../../utils/functions/urls";
 import "./Podcasts.scss";
 
-const Podcast = ({ changeStatus }) => {
+const Podcasts = ({ changeStatus }) => {
   const { podcastId } = useParams();
   const DateNow = new Date();
   const dataLocalStorage = JSON.parse(localStorage.getItem(podcastId));
@@ -54,21 +54,15 @@ const Podcast = ({ changeStatus }) => {
         image={podcastData.image}
         description={podcastData.description}
       />
-      <Routes>
-        {INTERNAL_ROUTES.map(({ key, component: Component, path }) => {
-          return (
-            <Route
-              key={key}
-              path={path}
-              element={
-                <Component dataEpisodes={dataEpisodes} podcastId={podcastId} />
-              }
-            />
-          );
-        })}
-      </Routes>
     </div>
   );
 };
 
-export default Podcast;
+Podcasts.propTypes = {
+  changeStatus: PropTypes.func,
+};
+Podcasts.defaultProps = {
+  changeStatus: () => {},
+};
+
+export default Podcasts;

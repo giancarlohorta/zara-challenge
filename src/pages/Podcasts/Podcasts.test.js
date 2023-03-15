@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import { Default } from "./Home.stories";
+import { Default } from "./Podcasts.stories";
 
-describe("tests about Home page", () => {
+describe("tests about Podcasts page", () => {
   test("render all elements on default", async () => {
     render(
       <BrowserRouter>
@@ -10,11 +10,7 @@ describe("tests about Home page", () => {
       </BrowserRouter>
     );
     expect(
-      await screen.findByText("The Joe Budden Podcast")
+      await screen.findByText("Million Dollaz Worth Of Game")
     ).toBeInTheDocument();
-    expect(
-      screen.getByText("Million Dollaz Worth Of Game")
-    ).toBeInTheDocument();
-    expect(screen.getByTestId("search")).toBeInTheDocument();
   });
 });

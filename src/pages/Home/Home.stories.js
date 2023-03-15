@@ -1,15 +1,15 @@
-import React from "react";
-import Home from "./Home";
-import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+import React from "react";
 import { podcasts } from "../../utils/mock/podcasts";
+import Home from "./Home";
+
+const mock = new MockAdapter(axios, { delayResponse: 0 });
 
 export default {
   title: "Pages/Home",
   component: Home,
 };
-
-const mock = new MockAdapter(axios, { delayResponse: 0 });
 
 const mockRequest = () => {
   mock.onGet(/toppodcasts/gi).reply(200, podcasts);

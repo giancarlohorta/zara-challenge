@@ -21,6 +21,11 @@ describe("tests about item component", () => {
       </BrowserRouter>
     );
     expect(screen.getByText("The Joe Budden Podcast")).toBeInTheDocument();
+    expect(screen.getByAltText("The Joe Budden Podcast")).toBeInTheDocument();
+    expect(screen.getByRole("link")).toHaveAttribute(
+      "href",
+      "/podcast/1535809341"
+    );
     expect(
       screen.getByText("Author: The Joe Budden Network")
     ).toBeInTheDocument();

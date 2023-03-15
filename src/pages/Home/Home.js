@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import ItemList from "../../components/ItemList";
+import { PropTypes } from "prop-types";
 import SearchInput from "../../components/SearchInput";
 import useFetch from "../../hooks/useFetch";
 import { KEY_PODCASTS, PODCASTS_LIMIT } from "../../utils/constants";
@@ -63,6 +64,13 @@ const Home = ({ changeStatus }) => {
       <ItemList list={filteredPodcasts} />
     </div>
   );
+};
+
+Home.propTypes = {
+  changeStatus: PropTypes.func,
+};
+Home.defaultProps = {
+  changeStatus: () => {},
 };
 
 export default Home;

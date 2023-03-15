@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
 import { millisToMinutesAndSeconds } from "../../utils/functions/convert";
 import "./Episodes.scss";
 
@@ -35,5 +36,21 @@ const Episodes = ({ dataEpisodes, podcastId }) => {
     </div>
   );
 };
-
+Episodes.propTypes = {
+  dataEpisodes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      duration: PropTypes.number,
+      description: PropTypes.string,
+      episodeUrl: PropTypes.string,
+      releaseDate: PropTypes.string,
+    })
+  ),
+  podcastId: PropTypes.string,
+};
+Episodes.defaultProps = {
+  dataEpisodes: [],
+  podcastId: "",
+};
 export default Episodes;

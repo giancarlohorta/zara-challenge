@@ -5,7 +5,7 @@ import "./Item.scss";
 
 const Item = ({ id, image, name, author, description, internalPage }) => {
   return (
-    <Link className="item" to={`/podcast/${id}`}>
+    <Link className="item" to={`/podcast/${id}`} role="link">
       <img src={image} alt={name} />
       <h2 className="item__title">{name}</h2>
       <p className="item__author">Author: {author}</p>
@@ -25,6 +25,7 @@ Item.propTypes = {
   name: PropTypes.string,
   author: PropTypes.string,
   description: PropTypes.string,
+  internalPage: PropTypes.bool,
 };
 Item.defaultProps = {
   id: "",
@@ -32,6 +33,7 @@ Item.defaultProps = {
   name: "",
   author: "",
   description: "",
+  internalPage: false,
 };
 
 export default Item;

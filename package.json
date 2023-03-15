@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --collect-coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -70,6 +70,7 @@
     "@storybook/testing-library": "^0.0.13",
     "axios-mock-adapter": "^1.21.2",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "jest": "^27.5.1",
     "webpack": "^5.76.1"
   }
 }

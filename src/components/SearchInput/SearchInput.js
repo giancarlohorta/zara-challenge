@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import "./SearchInput.scss";
 
 const SearchInput = ({ onChange, numberPodcasts, keyword }) => {
@@ -16,6 +17,17 @@ const SearchInput = ({ onChange, numberPodcasts, keyword }) => {
       />
     </div>
   );
+};
+
+SearchInput.propTypes = {
+  onChange: PropTypes.func,
+  numberPodcasts: PropTypes.number,
+  keyword: PropTypes.string,
+};
+SearchInput.defaultProps = {
+  onChange: () => {},
+  numberPodcasts: 0,
+  keyword: "",
 };
 
 export default SearchInput;
